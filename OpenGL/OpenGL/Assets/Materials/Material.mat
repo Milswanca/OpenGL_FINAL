@@ -1,0 +1,7 @@
+{
+	"VS": "Shaders/VertexShader.vert",
+	"PS": "Shaders/PixelShader.pixel",
+	"Scalars": {
+	
+	}
+}
