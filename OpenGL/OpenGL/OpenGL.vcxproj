@@ -19,66 +19,68 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Private\AssetLoader.cpp" />
-    <ClCompile Include="Source\Private\Mesh.cpp" />
-    <ClCompile Include="Source\Private\Camera.cpp" />
-    <ClCompile Include="Source\Private\CameraComponent.cpp" />
-    <ClCompile Include="Source\Private\Actor.cpp" />
-    <ClCompile Include="Source\Private\Object.cpp" />
-    <ClCompile Include="Source\Private\Component.cpp" />
+    <ClCompile Include="Source\Private\Core\AssetImporter.cpp" />
+    <ClCompile Include="Source\Private\Core\AssetLoader.cpp" />
+    <ClCompile Include="Source\Private\Core\Mesh.cpp" />
+    <ClCompile Include="Source\Private\Core\Camera.cpp" />
+    <ClCompile Include="Source\Private\Core\CameraComponent.cpp" />
+    <ClCompile Include="Source\Private\Core\Actor.cpp" />
+    <ClCompile Include="Source\Private\Core\Object.cpp" />
+    <ClCompile Include="Source\Private\Core\Component.cpp" />
     <ClCompile Include="Source\Private\Math\Quaternion.cpp" />
     <ClCompile Include="Source\Private\Math\Math.cpp" />
     <ClCompile Include="Source\Private\Math\Matrix4x4.cpp" />
-    <ClCompile Include="Source\Private\Material.cpp" />
-    <ClCompile Include="Source\Private\DataTypes.cpp" />
-    <ClCompile Include="Source\Private\Engine.cpp" />
-    <ClCompile Include="Source\Private\File.cpp" />
-    <ClCompile Include="Source\Private\OpenGL.cpp" />
-    <ClCompile Include="Source\Private\PCH.cpp">
+    <ClCompile Include="Source\Private\Core\Material.cpp" />
+    <ClCompile Include="Source\Private\Core\DataTypes.cpp" />
+    <ClCompile Include="Source\Private\Core\Engine.cpp" />
+    <ClCompile Include="Source\Private\Core\File.cpp" />
+    <ClCompile Include="Source\Private\Core\OpenGL.cpp" />
+    <ClCompile Include="Source\Private\Core\PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Source\Private\Program.cpp" />
-    <ClCompile Include="Source\Private\Shader.cpp" />
-    <ClCompile Include="Source\Private\TimeManager.cpp" />
-    <ClCompile Include="Source\Public\glad.c">
+    <ClCompile Include="Source\Private\Core\Program.cpp" />
+    <ClCompile Include="Source\Private\Core\Shader.cpp" />
+    <ClCompile Include="Source\Private\Core\TimeManager.cpp" />
+    <ClCompile Include="Source\Public\Core\glad.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Source\Private\Transform.cpp" />
+    <ClCompile Include="Source\Private\Core\Transform.cpp" />
     <ClCompile Include="Source\Private\Math\Vector4.cpp" />
     <ClCompile Include="Source\Private\Math\Vector3.cpp" />
-    <ClCompile Include="Source\Private\StaticMeshComponent.cpp" />
+    <ClCompile Include="Source\Private\Core\StaticMeshComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Public\AssetLoader.h" />
-    <ClInclude Include="Source\Public\json.hpp" />
-    <ClInclude Include="Source\Public\Mesh.h" />
-    <ClInclude Include="Source\Public\Camera.h" />
-    <ClInclude Include="Source\Public\CameraComponent.h" />
-    <ClInclude Include="Source\Public\Actor.h" />
-    <ClInclude Include="Source\Public\Object.h" />
-    <ClInclude Include="Source\Public\Component.h" />
+    <ClInclude Include="Source\Public\Core\AssetImporter.h" />
+    <ClInclude Include="Source\Public\Core\AssetLoader.h" />
+    <ClInclude Include="Source\Public\Core\json.hpp" />
+    <ClInclude Include="Source\Public\Core\Mesh.h" />
+    <ClInclude Include="Source\Public\Core\Camera.h" />
+    <ClInclude Include="Source\Public\Core\CameraComponent.h" />
+    <ClInclude Include="Source\Public\Core\Actor.h" />
+    <ClInclude Include="Source\Public\Core\Object.h" />
+    <ClInclude Include="Source\Public\Core\Component.h" />
     <ClInclude Include="Source\Public\Math\Quaternion.h" />
     <ClInclude Include="Source\Public\Math\Math.h" />
     <ClInclude Include="Source\Public\Math\Matrix4x4.h" />
-    <ClInclude Include="Source\Public\Material.h" />
-    <ClInclude Include="Source\Public\DataTypes.h" />
-    <ClInclude Include="Source\Public\Engine.h" />
-    <ClInclude Include="Source\Public\File.h" />
+    <ClInclude Include="Source\Public\Core\Material.h" />
+    <ClInclude Include="Source\Public\Core\DataTypes.h" />
+    <ClInclude Include="Source\Public\Core\Engine.h" />
+    <ClInclude Include="Source\Public\Core\File.h" />
     <ClInclude Include="Source\Public\PCH.h" />
-    <ClInclude Include="Source\Public\Program.h" />
-    <ClInclude Include="Source\Public\Shader.h" />
-    <ClInclude Include="Source\Public\TimeManager.h" />
-    <ClInclude Include="Source\Public\tiny_obj_loader.h" />
-    <ClInclude Include="Source\Public\Transform.h" />
+    <ClInclude Include="Source\Public\Core\Program.h" />
+    <ClInclude Include="Source\Public\Core\Shader.h" />
+    <ClInclude Include="Source\Public\Core\TimeManager.h" />
+    <ClInclude Include="Source\Public\Core\tiny_obj_loader.h" />
+    <ClInclude Include="Source\Public\Core\Transform.h" />
     <ClInclude Include="Source\Public\Math\Vector4.h" />
     <ClInclude Include="Source\Public\Math\Vector3.h" />
-    <ClInclude Include="Source\Public\StaticMeshComponent.h" />
+    <ClInclude Include="Source\Public\Core\StaticMeshComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\PixelShader.pixel" />
@@ -200,7 +202,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\Public\;%(AdditionalIncludeDirectories);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\Public\;$(ProjectDir)Source\Public\Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
     </ClCompile>

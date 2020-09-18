@@ -5,7 +5,10 @@ uniform vec3 lightPos;
 
 in vec3 FragPos;    
 in vec3 Normal;
-in vec4 vertexColor; // the input variable from the vertex shader (same name and same type)  
+in vec4 Colour; // the input variable from the vertex shader (same name and same type)  
+in vec3 UV;
+
+uniform sampler2D tex;
 
 void main()
 {
@@ -15,6 +18,7 @@ void main()
 	float diff = max(dot(norm, lightDir), 0.0);
 	vec3 diffuse = diff * vec3(1.0, 1.0, 1.0);
 
-	vec3 result = (diffuse);
+	vec3 texColour = texture(tex, UV.xy).xyz;
+	vec3 result = (texColour);
 	FragColor = vec4(result, 1.0);
 } 

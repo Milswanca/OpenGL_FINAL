@@ -1,6 +1,6 @@
 {
-	"VS": "Shaders/VertexShader.vert",
-	"PS": "Shaders/PixelShader.pixel",
+	"VS": "Shaders/Diffuse.vert",
+	"PS": "Shaders/Diffuse.pixel",
 	"Scalars": {
 	
 	},

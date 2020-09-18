@@ -1,0 +1,10 @@
+{
+	"VS": "Shaders/VertexColour.vert",
+	"PS": "Shaders/VertexColour.pixel",
+	"Scalars": {
+	
+	},
+	"Textures": [
+
+	]
+}

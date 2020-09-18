@@ -1,0 +1,10 @@
+{
+	"VS": "Shaders/Diffuse.vert",
+	"PS": "Shaders/Diffuse.pixel",
+	"Scalars": {
+	
+	},
+	"Textures": [
+		"Meshes/breakfast_room/picture3.png"
+	]
+}
