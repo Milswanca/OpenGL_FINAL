@@ -5,7 +5,6 @@
 *.slo
 *.lo
 *.o
-*.obj
 
 # Precompiled Headers
 *.gch
@@ -32,5 +31,9 @@
 *.app
 
 OpenGL/.vs/
-Build/
-Output/
+
+OpenGL/Engine/Build/
+OpenGL/Engine/Output/
+
+OpenGL/Game/Build/
+OpenGL/Game/Output/

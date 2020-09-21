@@ -1,0 +1,10 @@
+{
+	"VS": "Assets/Shaders/VertexShader.vert",
+	"PS": "Assets/Shaders/PixelShader.pixel",
+	"Scalars": {
+	
+	},
+	"Textures": [
+		"Assets/Meshes/breakfast_room/tiles.png"
+	]
+}
