@@ -13,7 +13,7 @@ public:
 	{
 		std::string extension = _file.substr(_file.find_last_of(".") + 1);
 
-		if (extension == "obj")
+		if (extension == "mesh")
 		{
 			return reinterpret_cast<T*>(LoadObj(_outer, _file));
 		}

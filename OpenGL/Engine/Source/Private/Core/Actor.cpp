@@ -6,6 +6,7 @@
 Actor::Actor(const ObjectInitData& _data) : Object(_data)
 {
 	m_rootComponent = AddComponent<Component>(nullptr);
+	m_scene = _data.scene;
 }
 
 void Actor::AddComponentImpl(Component* _component, Component* _parent)
@@ -22,6 +23,16 @@ void Actor::Start()
 }
 
 void Actor::Update(const float _dt)
+{
+
+}
+
+void Actor::PostUpdate(const float _dt)
+{
+
+}
+
+void Actor::Render()
 {
 
 }
@@ -104,4 +115,14 @@ Matrix4x4 Actor::GetWorldToLocal() const
 Component* Actor::GetRootComponent() const
 {
 	return m_rootComponent;
+}
+
+Scene* Actor::GetScene()
+{
+	return m_scene;
+}
+
+const Scene* Actor::GetScene() const
+{
+	return m_scene;
 }

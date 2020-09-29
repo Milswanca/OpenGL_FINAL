@@ -4,7 +4,7 @@
 
 Program::Program(const ObjectInitData& _data) : Actor(_data)
 {
-	SystemDialogs::OpenFile();
+	//SystemDialogs::OpenFile();
 }
 
 Program::~Program()

@@ -3,10 +3,12 @@
 #include "CameraComponent.h"
 
 #include "Engine.h"
+#include "InputSystem.h"
 
 Camera::Camera(const ObjectInitData& _data) : Actor(_data)
 {
 	m_camera = AddComponent<CameraComponent>(GetRootComponent());
+	m_speed = 100.0f;
 }
 
 void Camera::SetProjection(const float _ar, const float _fov, const float _nearClip, const float _farClip)
@@ -25,54 +27,34 @@ void Camera::Update(const float _dt)
 {
 	Actor::Update(_dt);
 
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_D) == GLFW_PRESS)
+	if (GetInputSystem()->IsKeyDown('W'))
 	{
-		Translate(Vector3(10.0f * _dt, 0.0f, 0.0f));
+		SetWorldPosition(GetWorldPosition() + Vector3(0.0f, 0.0f, m_speed * _dt));
 	}
 
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_A) == GLFW_PRESS)
+	if (GetInputSystem()->IsKeyDown('S'))
 	{
-		Translate(Vector3(-10.0f * _dt, 0.0f, 0.0f));
+		SetWorldPosition(GetWorldPosition() + Vector3(0.0f, 0.0f, -m_speed * _dt));
 	}
 
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_W) == GLFW_PRESS)
+	if (GetInputSystem()->IsKeyDown('A'))
 	{
-		Translate(Vector3(0.0f, 0.0f, -10.0f * _dt));
+		SetWorldPosition(GetWorldPosition() + Vector3(-m_speed * _dt, 0.0f, 0.0f));
 	}
 
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_S) == GLFW_PRESS)
+	if (GetInputSystem()->IsKeyDown('D'))
 	{
-		Translate(Vector3(0.0f, 0.0f, 10.0f * _dt));
+		SetWorldPosition(GetWorldPosition() + Vector3(m_speed * _dt, 0.0f, 0.0f));
 	}
 
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_Q) == GLFW_PRESS)
+	if (GetInputSystem()->IsKeyDown('Q'))
 	{
-		Translate(Vector3(0.0f, -10.0f * _dt, 0.0f));
+		SetWorldPosition(GetWorldPosition() + Vector3(0.0f, -m_speed * _dt, 0.0f));
 	}
 
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_E) == GLFW_PRESS)
+	if (GetInputSystem()->IsKeyDown('E'))
 	{
-		Translate(Vector3(0.0f, 10.0f * _dt, 0.0f));
-	}
-
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_LEFT) == GLFW_PRESS)
-	{
-		m_lookAtPos.x = (m_lookAtPos.x - 10.0f * _dt);
-	}
-
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_RIGHT) == GLFW_PRESS)
-	{
-		m_lookAtPos.x = (m_lookAtPos.x + 10.0f * _dt);
-	}
-
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_UP) == GLFW_PRESS)
-	{
-		m_lookAtPos.y = (m_lookAtPos.y + 10.0f * _dt);
-	}
-
-	if (glfwGetKey(GetEngine()->GetMainWindow(), GLFW_KEY_DOWN) == GLFW_PRESS)
-	{
-		m_lookAtPos.y = (m_lookAtPos.y - 10.0f * _dt);
+		SetWorldPosition(GetWorldPosition() + Vector3(0.0f, m_speed * _dt, 0.0f));
 	}
 
 	SetView(GetWorldPosition(), GetWorldPosition() + Vector3(0.0f, 0.0f, -1.0f), Vector3(0.0f, 1.0f, 0.0f));

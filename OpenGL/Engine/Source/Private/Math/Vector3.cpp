@@ -1,6 +1,8 @@
 #include "PCH.h"
 #include "Math/Vector3.h"
 
+#include "Serialization.h"
+
 Vector3::Vector3()
 {
 	x = 0.0f;
@@ -132,4 +134,16 @@ Vector3 operator+(const Vector3& _lhs, const Vector3& _rhs)
 	v.z += _rhs.z;
 
 	return v;
+}
+
+Serializer& operator<<(Serializer& _os, const Vector3& _v)
+{
+	_os.Write((void*)&_v, sizeof(Vector3));
+	return _os;
+}
+
+Serializer& operator>>(Serializer& _is, Vector3& _v)
+{
+	_is.Read(&_v, sizeof(Vector3));
+	return _is;
 }

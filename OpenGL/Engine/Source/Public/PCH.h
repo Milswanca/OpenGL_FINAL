@@ -10,9 +10,13 @@
 #include <map>
 #include <vector>
 #include <cmath>
+#include <ostream>
 
 #include "Math/MathCore.h"
 #include "json.hpp"
 #include "DataTypes.h"
+
+#include <windows.h>
+#include <Windowsx.h>
 
 using json = nlohmann::json;

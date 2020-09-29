@@ -3,105 +3,120 @@
 #include "Program.h"
 #include "TimeManager.h"
 
+#include "Window.h"
 #include "Actor.h"
+#include "Scene.h"
 
 Engine::Engine(const ObjectInitData& _data) : Object(_data)
 {
 
 }
 
-void Engine::Init()
+void Engine::Init(HINSTANCE _handleInstance)
 {
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	m_handleInstance = _handleInstance;
 
 	TimeManager::Init();
+}
 
-	CreateWindow(1200, 800, "OpenGL Demo");
-	glEnable(GL_DEPTH_TEST);
+void Engine::RegisterScene(Scene* _scene)
+{
+	m_scenes.push_back(_scene);
+}
 
-#if EDITOR
-	m_program = SpawnProgram<Program>();
-#endif
+void Engine::SetAsActiveScene(Scene* _scene)
+{
+	if (m_activeScene != nullptr)
+	{
+		m_activeScene->RemovedAsActiveScene();
+	}
 
-	//glEnable(GL_CULL_FACE);
-	//glCullFace(GL_BACK);
+	m_activeScene = _scene;
+	
+	if (m_activeScene != nullptr)
+	{
+		m_activeScene->BecameActiveScene();
+	}
+}
+
+void Engine::SetMainWindow(Window* _window)
+{
+	m_mainWindow = _window;
 }
 
 void Engine::Run()
 {
-	if (m_mainWindow == NULL)
-	{
-		throw "Trying to run the engine but there has been no window created";
-	}
-
-	glfwSwapInterval(1);
-	while (!glfwWindowShouldClose(m_mainWindow))
+	while (true)
 	{
 		TimeManager::Update();
 		float dt = TimeManager::GetDeltaTime();
 
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		Update(dt);
+	}
+}
 
-		for (int i = 0; i < m_actors.size(); ++i)
+void Engine::Update(float _dt)
+{
+	for (int i = 0; i < m_scenes.size(); ++i)
+	{
+		m_scenes[i]->UpdateScene(_dt);
+	}
+
+	for (int i = 0; i < m_windows.size(); ++i)
+	{
+		Window* w = m_windows[i];
+		bool msg = w->Update();
+
+		///Close
+		if (msg == false && w == m_mainWindow)
 		{
-			m_actors[i]->Update(dt);
+			return;
 		}
+	}
+}
 
+void Engine::RenderScene(Scene* _scene)
+{
+	if (_scene == nullptr)
+		return;
 
-		glfwSwapBuffers(m_mainWindow);
-		glfwPollEvents();
+	for (int i = 0; i < _scene->GetNumActors(); ++i)
+	{
+		_scene->GetActor(i)->Render();
 	}
 }
 
 void Engine::Shutdown()
 {
-	m_program = nullptr;
 
-	glfwDestroyWindow(m_mainWindow);
-	glfwTerminate();
 }
 
-GLFWwindow* Engine::CreateWindow(int _width, int _height, const char* _title)
+HINSTANCE Engine::GetHandleInstance() const
 {
-	GLFWwindow* window = glfwCreateWindow(_width, _height, "LearnOpenGL", NULL, NULL);
-	if (window == NULL)
-	{
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-		return NULL;
-	}
-	glfwMakeContextCurrent(window);
-	
-	if (m_mainWindow == NULL)
-	{
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-		{
-			throw "Failed to initialize GLAD";
-		}
-
-		m_mainWindow = window;
-	}
-
-	//SetViewport(0, 0, _width, _height);
-	return window;
+	return m_handleInstance;
 }
 
-void Engine::SetViewport(int _x, int _y, int _width, int _height)
+Engine* Engine::GetEngine()
 {
-	glViewport(_x, _y, _width, _height);
-}
-
-GLFWwindow* Engine::GetMainWindow() const
-{
-	return m_mainWindow;
+	return this;
 }
 
 const Engine* Engine::GetEngine() const
 {
 	return this;
+}
+
+Scene* Engine::GetActiveScene() const
+{
+	return m_activeScene;
+}
+
+void Engine::RegisterWindow(Window* _window)
+{
+	m_windows.push_back(_window);
+}
+
+void Engine::WindowDestroyed(Window* _window)
+{
+	//m_windows.remove(_window);
 }

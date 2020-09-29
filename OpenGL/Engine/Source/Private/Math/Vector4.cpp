@@ -2,6 +2,8 @@
 #include "Math/Vector4.h"
 #include "Math/Vector3.h"
 
+#include "Serialization.h"
+
 Vector4::Vector4()
 {
 	x = 0.0f;
@@ -77,4 +79,20 @@ float Vector4::operator[](const size_t _index) const
 Vector4::operator Vector3() const
 {
 	return Vector3(x, y, z);
+}
+
+Serializer& operator<<(Serializer& _os, const Vector4& _v)
+{
+	_os.Write((void*)&_v, sizeof(Vector4));
+	return _os;
+}
+
+Serializer& operator>>(Serializer& _is, Vector4& _v)
+{
+	_is >> _v.x;
+	_is >> _v.y;
+	_is >> _v.z;
+	_is >> _v.w;
+
+	return _is;
 }

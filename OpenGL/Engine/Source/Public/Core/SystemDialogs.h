@@ -2,6 +2,7 @@
 class SystemDialogs
 {
 public:
-	static void OpenFile();
+	static std::string OpenFile(const char* _filter);
+	static std::string SaveFile(std::string _filter);
 };
 

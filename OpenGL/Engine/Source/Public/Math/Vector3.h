@@ -42,4 +42,7 @@ public:
 	friend Vector3 operator-(const Vector3& _lhs);
 	friend Vector3 operator-(const Vector3& _lhs, const Vector3& _rhs);
 	friend Vector3 operator+(const Vector3& _lhs, const Vector3& _rhs);
+	
+	friend Serializer& operator<<(Serializer& _os, const Vector3& _v);
+	friend Serializer& operator>>(Serializer& _os, Vector3& _v);
 };

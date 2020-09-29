@@ -21,5 +21,6 @@ private:
 	CameraComponent* m_camera;
 	Vector3 m_lookAtPos;
 	Vector3 m_viewPos;
+	float m_speed;
 };
 

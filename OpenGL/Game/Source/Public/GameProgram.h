@@ -14,6 +14,7 @@ public:
 
 	virtual void Start() override;
 	virtual void Update(const float _deltaTime) override;
+	virtual void Render() override;
 	virtual void End() override;
 
 private:

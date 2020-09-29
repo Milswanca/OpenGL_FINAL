@@ -1,6 +1,7 @@
 #pragma once
 
 struct Vector3;
+class Serializer;
 
 struct Vector4
 {
@@ -32,5 +33,8 @@ public:
 	float operator[](const size_t _index) const;
 
 	operator Vector3() const;
+
+	friend Serializer& operator<<(Serializer& _os, const Vector4& _v);
+	friend Serializer& operator>>(Serializer& _os, Vector4& _v);
 };
 

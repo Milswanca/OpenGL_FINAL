@@ -21,7 +21,7 @@
     <ClCompile Include="Source\Private\PCH.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameProgram.cpp">
+    <ClCompile Include="Source\Private\GameProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="Source\Public\PCH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameProgram.h">
+    <ClInclude Include="Source\Public\GameProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
